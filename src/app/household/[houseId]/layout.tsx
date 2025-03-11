@@ -13,6 +13,7 @@ import {
   CircuitBoard,
   ChartCandlestick,
   UtilityPole,
+  Settings2,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";

@@ -1,8 +1,9 @@
+import { refreshIntervalForPresentation, refreshIntervalForProduction } from "@/constants/time";
 import { HouseholdType } from "@/models/house";
 
 export default class ApiService<T> {
-  static baseUri = "http://34.130.185.159:8080/api";
-  // static baseUri = "http://localhost:8080/api";
+  // static baseUri = "http://34.130.185.159:8080/api";
+  static baseUri = "http://localhost:8080/api";
 
   static gridUri = this.baseUri + "/grid";
   static houseUri = this.baseUri + "/house";
@@ -12,6 +13,8 @@ export default class ApiService<T> {
   static weatherUri = this.baseUri + "/weather";
   static orderUri = this.baseUri + "/order";
   static statisticUri = this.baseUri + "/statistic";
+
+  static refreshInterval = refreshIntervalForPresentation;
 
   async fetch(
     resource: string | URL | globalThis.Request,
@@ -115,6 +118,14 @@ export default class ApiService<T> {
 
   static buildSimCfgUri(): string {
     return this.simUri;
+  }
+
+  static buildSimIntervalUri(): string {
+    return this.simUri + "/interval";
+  }
+
+  static buildSimIntervalSetterUri(interval: number): string {
+    return this.simUri + "/interval/set?interval=" + interval;
   }
 
   // Weather

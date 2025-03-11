@@ -7,7 +7,7 @@ export default function SwrConfig({ children }: { children: React.ReactNode }) {
   return (
     <SWRConfig
       value={{
-        refreshInterval: 30000,
+        refreshInterval: ApiService.refreshInterval,
         revalidateOnMount: true,
         fetcher: async (resource, init) =>
           new ApiService<unknown>().fetch(resource, init),
